@@ -5,11 +5,15 @@ import { getVideoInfo } from '../utils'
 const Song = (props) => {
   const [info, setInfo] = useState({})
 
-  useEffect( async () => {
+  useEffect(() => {
+    getInfo()
+  }, [props.image.videoLink])
+  
+  const getInfo = async () => {
     let info = await getVideoInfo(props.image.videoLink)
     console.log(props)
     setInfo(info)
-  }, [props.image.videoLink])
+  }
 
     return (
         <div className="gif-item" key={info.thumbnail}>
