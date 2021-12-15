@@ -3,7 +3,7 @@ import { useEffect } from 'react/cjs/react.development'
 import { getVideoInfo } from '../utils'
 
 const Song = (props) => {
-  const [info, setInfo] = useState({})
+  const [info, setInfo] = useState(null)
 
   useEffect(() => {
     getInfo()
@@ -13,6 +13,10 @@ const Song = (props) => {
     let info = await getVideoInfo(props.image.videoLink)
     console.log(props)
     setInfo(info)
+  }
+
+  if (info === null) {
+    return <div></div>
   }
 
     return (
